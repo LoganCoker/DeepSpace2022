@@ -13,7 +13,12 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static final class DriveTrainConstants {
+
+    public static final class ControllerConstants {
+        public static final int m_driverController = 0;
+    }
+    
+    public static final class DrivetrainConstants {
         public static final int m_frontLeftMotor = 0;
         public static final int m_frontRightMotor = 1;
         public static final int m_backLeftMotor = 2;
@@ -28,15 +33,23 @@ public final class Constants {
         public static final double clawClosed = 0.8;
     }
 
-    public static final class CameraConstants {
-
-    }
-
     public static final class LiftConstants {
-
+        public static final int m_leftArmMotor = 6;
+        public static final int m_rightArmMotor = 7;
+        public static final int m_leftAnalogPotentiometer = 0;
+        public static final int m_rightAnalogPotentiometer = 1;
     }
 
     public static final class WristConstants {
         public static final int m_wristMotor = 5;
+        public static final double wristUp = 0.6;
+        public static final double wristDown = -0.6;
+    }
+
+    public static final class UniversalConstants {
+        public static final double stopSpeed = 0.0;
+        public static final double armsP = 1.0;
+        public static final double armsI = 0.0;
+        public static final double armsD = 0.0; 
     }
 }

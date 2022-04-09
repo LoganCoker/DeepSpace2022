@@ -10,7 +10,7 @@ import frc.robot.Constants.ClawConstants;
 
 public class Claw extends SubsystemBase {
   private Servo m_clawMotor;
-  /** Creates a new Claw. */
+
   public Claw() {
     m_clawMotor = new Servo(ClawConstants.m_servoMotor);
   }
