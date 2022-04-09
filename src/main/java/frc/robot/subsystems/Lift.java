@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
@@ -28,6 +30,14 @@ public class Lift extends SubsystemBase {
 
     m_leftPIDController = new PIDController(UniversalConstants.armsP, UniversalConstants.armsI, UniversalConstants.armsD);
     m_rightPIDController = new PIDController(UniversalConstants.armsP, UniversalConstants.armsI, UniversalConstants.armsD);
+  }
+
+  public void putSetPoint(DoubleSupplier m_setPoint) {
+
+  }
+
+  public void syncRight() {
+    
   }
 
   public void stop() {

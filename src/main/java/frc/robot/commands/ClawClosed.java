@@ -13,7 +13,7 @@ public class ClawClosed extends CommandBase {
     public ClawClosed(Claw subsystem) {
       m_subsystem = subsystem;
 
-    addRequirements(m_subsystem);
+      addRequirements(m_subsystem);
   }
 
   @Override
