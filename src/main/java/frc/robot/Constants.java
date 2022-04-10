@@ -38,6 +38,7 @@ public final class Constants {
         public static final int m_rightArmMotor = 7;
         public static final int m_leftAnalogPotentiometer = 0;
         public static final int m_rightAnalogPotentiometer = 1;
+        public static final double liftPIDTolorence = 0.5;
     }
 
     public static final class WristConstants {

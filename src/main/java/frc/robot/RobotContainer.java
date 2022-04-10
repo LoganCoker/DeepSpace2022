@@ -6,9 +6,15 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.commands.ArcadeDrive;
+import frc.robot.commands.Auto;
+import frc.robot.subsystems.Camera;
+import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Lift;
+import frc.robot.subsystems.Wrist;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -19,8 +25,14 @@ import frc.robot.subsystems.DriveTrain;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_drivetrian = new DriveTrain();
+  private final Camera m_camera = new Camera();
+  private final Claw m_claw = new Claw();
+  private final Lift m_lift = new Lift();
+  private final Wrist m_wrist = new Wrist();
 
   private final XboxController m_driverController = new XboxController(ControllerConstants.m_driverController);
+
+  private final Auto m_auto = new Auto(m_drivetrian);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -39,13 +51,8 @@ public class RobotContainer {
 
   }
 
-  /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
-   */
-  // public Command getAutonomousCommand() {
-  //   // An ExampleCommand will run in autonomous
-  //   return ;
-  // }
+
+  public Command getAutonomousCommand() {
+    return m_auto;
+ }
 }
