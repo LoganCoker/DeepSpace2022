@@ -20,6 +20,8 @@ public class Lift extends SubsystemBase {
   private PIDController m_leftPIDController;
   private PIDController m_rightPIDController;
   private double m_setPoint;
+  private double[] m_liftArray;
+  private int m_lastIndex;
 
   public Lift() {
     m_leftArmMotor = new VictorSP(LiftConstants.m_leftArmMotor);
@@ -30,6 +32,9 @@ public class Lift extends SubsystemBase {
 
     m_leftPIDController = new PIDController(UniversalConstants.armsP, UniversalConstants.armsI, UniversalConstants.armsD);
     m_rightPIDController = new PIDController(UniversalConstants.armsP, UniversalConstants.armsI, UniversalConstants.armsD);
+
+    m_liftArray = LiftConstants.liftArray;
+    m_lastIndex = 0;
   }
 
   public void putSetPoint(Double setPoint) {
@@ -44,6 +49,38 @@ public class Lift extends SubsystemBase {
 
   public boolean isAtSetPoint() {
     return (Math.abs(m_setPoint - m_leftAnalogPotentiometer.get()) <= LiftConstants.liftPIDTolorence);
+  }
+
+  public int incramentIndex(){
+    if (m_lastIndex < m_liftArray.length - 1) {
+      m_lastIndex++;
+    }
+    return m_lastIndex;
+  }
+
+  public int decramentIndex(){
+    if (m_lastIndex > 0){
+      m_lastIndex--;
+    }
+    return m_lastIndex;
+  }
+
+  public void incramentSetPoint(){
+    m_leftPIDController.setSetpoint(m_leftPIDController.getSetpoint() + 1);
+    if (m_leftPIDController.getSetpoint() >= m_liftArray[m_lastIndex + 1]) {
+      if (m_lastIndex < m_liftArray.length - 1) {
+        m_lastIndex++;
+      }
+    }
+  }
+
+  public void decramentSetPoint(){
+    m_leftPIDController.setSetpoint(m_leftPIDController.getSetpoint() - 4);
+    if (m_leftPIDController.getSetpoint() <= m_liftArray[m_lastIndex - 1]) {
+      if (m_lastIndex > 0) {
+        m_lastIndex--;
+      }
+    }
   }
 
   public void stop() {

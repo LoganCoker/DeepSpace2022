@@ -7,9 +7,19 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.Auto;
+import frc.robot.commands.BumpDown;
+import frc.robot.commands.BumpUp;
+import frc.robot.commands.ClawClosed;
+import frc.robot.commands.ClawOpen;
+import frc.robot.commands.DecreaseLift;
+import frc.robot.commands.IncreaseLift;
+import frc.robot.commands.WristDown;
+import frc.robot.commands.WristUp;
 import frc.robot.subsystems.Camera;
 import frc.robot.subsystems.Claw;
 import frc.robot.subsystems.DriveTrain;
@@ -48,7 +58,28 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    JoystickButton m_increaseIndexButton = new JoystickButton(m_driverController, ControllerConstants.increaseIndexButton);
+    JoystickButton m_decreaseIndexButton = new JoystickButton(m_driverController, ControllerConstants.decreaseIndexButton);
+    JoystickButton m_openClawButton = new JoystickButton(m_driverController, ControllerConstants.openClawButton);    
+    JoystickButton m_closeClawButton = new JoystickButton(m_driverController, ControllerConstants.closeClawButton);
+    JoystickButton m_bumpUpButton = new JoystickButton(m_driverController, ControllerConstants.bumpUpButtom);
+    JoystickButton m_bumpDownButton = new JoystickButton(m_driverController, ControllerConstants.bumpDownButton);
+    POVButton m_wristUpButton = new POVButton(m_driverController, 180);
+    POVButton m_wristDownButton = new POVButton(m_driverController, 0);
 
+    //Lift
+    m_increaseIndexButton.whenPressed(new IncreaseLift(m_lift));
+    m_decreaseIndexButton.whenPressed(new DecreaseLift(m_lift));
+    m_bumpUpButton.whileHeld(new BumpUp(m_lift));
+    m_bumpDownButton.whileHeld(new BumpDown(m_lift));
+
+    //Wrist
+    m_wristUpButton.whileHeld(new WristUp(m_wrist));
+    m_wristDownButton.whileHeld(new WristDown(m_wrist));
+
+    //Claw
+    m_openClawButton.whenPressed(new ClawOpen(m_claw));
+    m_closeClawButton.whenPressed(new ClawClosed(m_claw));
   }
 
 
