@@ -28,30 +28,30 @@ public final class Constants {
     
     public static final class DrivetrainConstants {
         public static final int m_frontLeftMotor = 0;
-        public static final int m_frontRightMotor = 1;
-        public static final int m_backLeftMotor = 2;
+        public static final int m_frontRightMotor = 2;
+        public static final int m_backLeftMotor = 1;
         public static final int m_backRightMotor = 3;
         public static final double speed = 0.5;
         public static final double rotation = 0.5;
     }
 
     public static final class ClawConstants {
-        public static final int m_servoMotor = 4;
+        public static final int m_servoMotor = 6;
         public static final double clawOpen = 0.2;
         public static final double clawClosed = 0.8;
     }
-
+    
     public static final class LiftConstants {
-        public static final int m_leftArmMotor = 6;
-        public static final int m_rightArmMotor = 7;
-        public static final int m_leftAnalogPotentiometer = 0;
-        public static final int m_rightAnalogPotentiometer = 1;
+        public static final int m_leftArmMotor = 5;
+        public static final int m_rightArmMotor = 4;
+        public static final int m_leftAnalogPotentiometer = 1;
+        public static final int m_rightAnalogPotentiometer = 0;
         public static final double liftPIDTolorence = 0.5;
         public static final double[] liftArray = {12.0, 19, 34.0, 50.0, 60.0, 80.0, 88.0};
     }
 
     public static final class WristConstants {
-        public static final int m_wristMotor = 5;
+        public static final int m_wristMotor = 7;
         public static final double wristUp = 0.6;
         public static final double wristDown = -0.6;
     }
