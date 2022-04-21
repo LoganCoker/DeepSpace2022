@@ -18,6 +18,7 @@ import frc.robot.commands.ClawClosed;
 import frc.robot.commands.ClawOpen;
 import frc.robot.commands.DecreaseLift;
 import frc.robot.commands.IncreaseLift;
+import frc.robot.commands.ManualLift;
 import frc.robot.commands.WristDown;
 import frc.robot.commands.WristUp;
 import frc.robot.subsystems.Camera;
@@ -64,6 +65,7 @@ public class RobotContainer {
     JoystickButton m_closeClawButton = new JoystickButton(m_driverController, ControllerConstants.closeClawButton);
     JoystickButton m_bumpUpButton = new JoystickButton(m_driverController, ControllerConstants.bumpUpButtom);
     JoystickButton m_bumpDownButton = new JoystickButton(m_driverController, ControllerConstants.bumpDownButton);
+    JoystickButton m_manualLiftButton = new JoystickButton(m_driverController, ControllerConstants.manualLift);
     POVButton m_wristUpButton = new POVButton(m_driverController, 180);
     POVButton m_wristDownButton = new POVButton(m_driverController, 0);
 
@@ -72,6 +74,7 @@ public class RobotContainer {
     m_decreaseIndexButton.whenPressed(new DecreaseLift(m_lift));
     m_bumpUpButton.whileHeld(new BumpUp(m_lift));
     m_bumpDownButton.whileHeld(new BumpDown(m_lift));
+    m_manualLiftButton.whenPressed(new ManualLift(m_lift,()-> 5.0));
 
     //Wrist
     m_wristUpButton.whileHeld(new WristUp(m_wrist));

@@ -24,6 +24,7 @@ public final class Constants {
         public static final int decreaseIndexButton = XboxController.Button.kA.value;
         public static final int openClawButton = XboxController.Button.kY.value;
         public static final int closeClawButton = XboxController.Button.kX.value;
+        public static final int manualLift = XboxController.Button.kRightStick.value;
     }
     
     public static final class DrivetrainConstants {

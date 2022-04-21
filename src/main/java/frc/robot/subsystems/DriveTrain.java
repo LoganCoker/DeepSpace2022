@@ -23,11 +23,11 @@ public class DriveTrain extends SubsystemBase {
     m_frontLeftMotor = new VictorSP(DrivetrainConstants.m_frontLeftMotor);
     m_backLeftMotor = new VictorSP(DrivetrainConstants.m_backLeftMotor);
     m_leftDrive = new MotorControllerGroup(m_frontLeftMotor, m_backLeftMotor);
+    m_leftDrive.setInverted(true);
 
     m_frontRightMotor = new VictorSP(DrivetrainConstants.m_frontRightMotor);
     m_backRightMotor = new VictorSP(DrivetrainConstants.m_backRightMotor);
     m_rightDrive = new MotorControllerGroup(m_frontRightMotor, m_backRightMotor);
-    m_rightDrive.setInverted(true);
 
     m_drivetrain = new DifferentialDrive(m_leftDrive, m_rightDrive);
   }

@@ -67,11 +67,11 @@ public class Lift extends SubsystemBase {
 
   public void incramentSetPoint(){
     m_leftPIDController.setSetpoint(m_leftPIDController.getSetpoint() + 1);
-    if (m_leftPIDController.getSetpoint() >= m_liftArray[m_lastIndex + 1]) {
-      if (m_lastIndex < m_liftArray.length - 1) {
-        m_lastIndex++;
-      }
-    }
+    // if (m_leftPIDController.getSetpoint() >= m_liftArray[m_lastIndex + 1]) {
+    //   if (m_lastIndex < m_liftArray.length - 1) {
+    //     m_lastIndex++;
+    //   }
+    // }
   }
 
   public void decramentSetPoint(){
