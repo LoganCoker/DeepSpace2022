@@ -72,8 +72,8 @@ public class RobotContainer {
     //Lift
     m_increaseIndexButton.whenPressed(new IncreaseLift(m_lift));
     m_decreaseIndexButton.whenPressed(new DecreaseLift(m_lift));
-    m_bumpUpButton.whileHeld(new BumpUp(m_lift));
-    m_bumpDownButton.whileHeld(new BumpDown(m_lift));
+    m_bumpUpButton.whenPressed(new BumpUp(m_lift));
+    m_bumpDownButton.whenPressed(new BumpDown(m_lift));
     m_manualLiftButton.whenPressed(new ManualLift(m_lift,()-> 5.0));
 
     //Wrist

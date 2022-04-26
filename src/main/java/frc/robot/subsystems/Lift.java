@@ -39,7 +39,7 @@ public class Lift extends SubsystemBase {
 
   public void putSetPoint(Double setPoint) {
     m_leftPIDController.setSetpoint(setPoint);
-    setPoint = m_setPoint;
+    m_setPoint = setPoint;
     syncRight();
   }
 
@@ -67,11 +67,11 @@ public class Lift extends SubsystemBase {
 
   public void incramentSetPoint(){
     m_leftPIDController.setSetpoint(m_leftPIDController.getSetpoint() + 1);
-    // if (m_leftPIDController.getSetpoint() >= m_liftArray[m_lastIndex + 1]) {
-    //   if (m_lastIndex < m_liftArray.length - 1) {
-    //     m_lastIndex++;
-    //   }
-    // }
+    if (m_leftPIDController.getSetpoint() >= m_liftArray[m_lastIndex + 1]) {
+      if (m_lastIndex < m_liftArray.length - 1) {
+        m_lastIndex++;
+      }
+    }
   }
 
   public void decramentSetPoint(){
@@ -93,5 +93,8 @@ public class Lift extends SubsystemBase {
     SmartDashboard.putNumber("Left Arm Potition", m_leftAnalogPotentiometer.get());
     SmartDashboard.putNumber("Right Arm Potition", m_rightAnalogPotentiometer.get());
     SmartDashboard.putBoolean("Arms Set Point", isAtSetPoint());
+    SmartDashboard.putNumber("Index", m_lastIndex);
+    m_leftArmMotor.set(m_leftPIDController.calculate(m_leftAnalogPotentiometer.get()));
+    m_rightArmMotor.set(m_rightPIDController.calculate(m_rightAnalogPotentiometer.get(), m_leftAnalogPotentiometer.get()));
   }
 }
