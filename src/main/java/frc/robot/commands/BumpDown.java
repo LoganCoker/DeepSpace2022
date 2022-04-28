@@ -17,11 +17,12 @@ public class BumpDown extends CommandBase {
   }
 
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_subsystem.decramentSetPoint();
+  }
 
   @Override
   public void execute() {
-    m_subsystem.decramentSetPoint();
   }
 
   @Override
@@ -29,6 +30,6 @@ public class BumpDown extends CommandBase {
 
   @Override
   public boolean isFinished() {
-    return false;
+    return m_subsystem.isAtSetPoint();
   }
 }
