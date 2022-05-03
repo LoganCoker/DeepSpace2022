@@ -49,9 +49,9 @@ public final class Constants {
         public static final int m_leftAnalogPotentiometer = 1;
         public static final int m_rightAnalogPotentiometer = 0;
         public static final double liftPIDTolorence = 0.5;
-        public static final double[] liftArray = {12.0, 19, 34.0, 50.0, 60.0, 80.0, 88.0};
+        public static final double[] liftArray = {19.0, 22.0, 33.0, 50.0, 60.0, 80.0, 93.0};
         public static final double m_scalingFactor = 116.5;
-        public static final double m_offSet = 2;
+        public static final double m_offSet = 5;
     }
 
     public static final class WristConstants {

@@ -47,7 +47,7 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    m_drivetrian.setDefaultCommand(new ArcadeDrive(m_drivetrian, ()-> m_driverController.getLeftY(),()-> m_driverController.getLeftX()));
+    m_drivetrian.setDefaultCommand(new ArcadeDrive(m_drivetrian, ()-> m_driverController.getLeftY(),()-> -1*(m_driverController.getLeftX())));
 
     configureButtonBindings();
   }
